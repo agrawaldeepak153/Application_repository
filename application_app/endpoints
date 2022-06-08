@@ -1,0 +1,52 @@
+#from types import MethodDescriptorType
+
+from distutils.log import debug
+from django.db import router
+from flask import Flask, jsonify,request
+
+
+app = Flask(__name__)
+#debug =True
+Student = ['Deepak',50,"Male"]
+#student_dict = {'name':'Deepak','age':35,'gender':'Male'}
+
+#@app.route('/Student')
+#def getStudent():
+    #return Student
+
+#@app.route('/Student/<string:name>')
+#def getStudent(name):
+    #return name
+'''
+@app.route('/Student/<string:name>')
+def getStudent(name):
+    list1 = []
+    for stu in Student:
+        list1.append(stu)
+
+    return jsonify(student_dict)
+'''
+@app.route('/createStudent',methods=['POST'])
+def create_Student():
+    request_date = request.get_data()
+    new_student = {
+        'name':'Amit',
+        'age':32,
+        'gender':'Male'
+        }
+    new_student1 = {
+        'name':'Ritu',
+        'age':25,
+        'gender':'FeMale'
+        }
+    Student.append(new_student)
+    Student.append(new_student1)
+    #return jsonify({'new_stu':Student})
+    return jsonify(Student)
+
+@app.route('/student')
+def getAllStudent():
+    return jsonify(Student)
+
+
+app.run(port = 5000)
