@@ -53,6 +53,9 @@ api = Api(app)
 def create_tables():
     db.create_all()
 
+
+
+
 class showUser(Resource):
     def get(self,name):
         _user = UserModel.find_by_name(name)
@@ -60,12 +63,16 @@ class showUser(Resource):
             return [_user.id,_user.username,_user.userpassword] #_user.userpassword
             #return {'User Name':name} #return jsonify({'User Record':_user}) #_user.json()
         return {'message':"the User Name {} Not Founded ".format(name)}
+        
+
 
 class addUser(Resource):
     parser = reqparse.RequestParser()
     parser.add_argument('id', type = int)
     parser.add_argument('username', type = str)
     parser.add_argument('userpassword', type = str)
+
+
 
     def post(self):
         #return {'Kuch bhi':"noo"}
