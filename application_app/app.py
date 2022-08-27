@@ -103,6 +103,7 @@ api.add_resource(addUser,'/AddUser')
 api.add_resource(deleteUser,'/DeleteUser/<string:name>')
 
 if __name__ == '__main__':
+    
     from db import db
     db.init_app(app)
     app.run(port=5000,debug = True)
