@@ -55,7 +55,6 @@ def create_tables():
 
 
 
-
 class showUser(Resource):
     def get(self,name):
         _user = UserModel.find_by_name(name)
